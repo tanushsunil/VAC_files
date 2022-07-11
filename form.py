@@ -5,17 +5,17 @@ import sqlite3
 conn = sqlite3.connect('data.db', check_same_thread=False)
 cur = conn.cursor()
 
-def addData(a, b, c, d):
+def addData(a, b, c):
     cur.execute(
         """CREATE TABLE IF NOT EXISTS email_form(NAME TEXT(50), AGE TEXT(50), EMAIL TEXT(60));""")
-    cur.execute("INSERT INTO email_form VALUES (?,?,?,?)", (a, b, c, d))
+    cur.execute("INSERT INTO email_form VALUES (?,?,?)", (a, b, c))
     conn.commit()
     conn.close()
     st.success("Successfully submitted")
 
 def main():
     st.write("Chance short film Competition")
-    with st.form(keys="Information form"):
+    with st.form(key = "kjk"):
         name = st.text_input("Enter your name :")
         age = st.text_input("Enter your age :")
         email = st.text_input("Enter your Email-ID :")
@@ -25,4 +25,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
